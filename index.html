@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer base {
+        textarea {
+          @apply border border-orange-500;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Método para encriptar</h1>
+    <div class="flex justify-center items-center border-2">
+      <form id="form" class="w-1/2">
+        <label for="tipo">
+          <input
+            type="radio"
+            name="tipo"
+            id="tipo"
+            value="encriptar"
+          />Encriptar
+        </label>
+        <label for="tipo">
+          <input
+            type="radio"
+            name="tipo"
+            id="tipo"
+            value="desencriptar"
+          />Desencriptar
+        </label>
+
+        <select name="metodo" id="metodo">
+          <option value="Columna">Columna</option>
+
+          <option value="Fila">Fila</option>
+        </select>
+
+        <input type="text" name="clave" id="clave" placeholder="clave" />
+        <textarea name="texto" id="texto" cols="30" rows="5">
+gdfgdfgfd</textarea
+        >
+        <input
+          type="text"
+          name="resultado"
+          placeholder="resultado"
+          id="resultado"
+        />
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </body>
+
+  <script>
+    document.getElementById("form").addEventListener("submit", function (e) {
+      e.preventDefault(); // Evita que se envíe el formulario de manera predeterminada
+
+      // Obtiene los datos del formulario
+      var texto = document.getElementById("texto").value;
+      var clave = document.getElementById("clave").value;
+      var metodo = document.querySelector("#metodo");
+      var selectMetodo = metodo.value;
+      console.log(selectMetodo);
+
+      // Crea un objeto FormData y agrega los datos del formulario
+      var formData = new FormData();
+      // Recibe en el post
+      formData.append("texto", texto);
+      formData.append("clave", clave);
+
+      // Envía la solicitud AJAX
+      // `tranposicion/${selectMetodo}.php`
+      fetch(`tranposicion/${selectMetodo}.php`, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const resultado = document.getElementById("resultado");
+          resultado.value = data.message;
+        })
+        .catch(function (error) {
+          // Maneja los errores aquí
+          console.error("err", error);
+        });
+    });
+  </script>
+</html>
