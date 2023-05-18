@@ -1,5 +1,16 @@
 <?php
 
+$text = $_POST['texto'];
+$clave = $_POST['clave'];
+$encriptar = $_POST['tarea'] == 'encriptar';
+
+$text = $encriptar
+    ? filaEncriptar($text, $clave)
+    : filaDecepcriptar($text, $clave);
+
+$reponse = array('status' => 'success', 'message' => $text);
+echo json_encode($reponse);
+
 function filaEncriptar($text, $clave)
 {
     $is_numeric_clave = is_numeric($clave);
@@ -124,13 +135,3 @@ function getVecAscii($clave)
 //         echo $array[$i] . '<br></br>';
 //     }
 // }
-
-// aououdsnceimdrl
-// $text = 'adiosmundocruel';
-// $clave = 'gat';
-// $text_cif = filaEncriptar($text, $clave);
-// $tex_dec = filaDecepcriptar($text_cif, $clave);
-
-// echo $text . '<br></br>' . $text_cif . '<br></br>' . $tex_dec . '<br></br>';
-$reponse = array('status' => 'success', 'message' => 'Desde archivo fila');
-echo json_encode($reponse);

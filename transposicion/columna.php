@@ -2,10 +2,14 @@
 
 $text = $_POST['texto'];
 $clave = $_POST['clave'];
+$encriptar = $_POST['tarea'] == 'encriptar';
 
-// $text = columna_encriptar($text, $clave);
+$text = $encriptar
+    ? columna_encriptar($text, $clave)
+    : columna_decepcriptar($text, $clave);
 
-
+$reponse = array('status' => 'success', 'message' => $text);
+echo json_encode($reponse);
 
 function columna_encriptar($text, $clave)
 {
@@ -133,14 +137,3 @@ function columna_decepcriptar($text, $clave)
 
     return $text_descrip;
 }
-
-// function hola()
-// {
-//     return 'holaaaaa';
-// }
-
-// $text = hola();
-
-// $response = array('status' => 'success', 'message' => 'Formulario enviado correctamente');
-$reponse = array('status' => 'success', 'message' => $text);
-echo json_encode($reponse);

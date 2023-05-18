@@ -37,6 +37,10 @@ function cifrarMensaje($mensaje, $clave) {
     $clave=trim($clave);
     $mensaje=trim($mensaje);
 
+    if (strlen($mensaje) !== strlen($clave)){
+        return 'La clave y el mensaje deben de tener la misma longitud';
+    }
+
     foreach (str_split($mensaje) as $index => $letra) {
         $letraMayuscula = strtoupper($letra);
         if (array_key_exists($letraMayuscula, $alfabetoHomofonico)) {
@@ -78,11 +82,20 @@ function descifrarMensaje($mensajeCifrado, $clave) {
 
     return $mensajeDescifrado;
 }
-$mensajeOriginal = 'BAJA ME LA JAULA JAIME';
-$clave = 'BAJA ME LA JAULA JAIME';
 
-$mensajeCifrado = cifrarMensaje($mensajeOriginal, $clave);
-echo 'Mensaje cifrado: ' . $mensajeCifrado . '<br>';
+$text = $_POST['texto'];
+$clave = $_POST['clave'];
+$tarea = $_POST['tarea'];
 
-$mensajeDescifrado = descifrarMensaje($mensajeCifrado, $clave);
-echo 'Mensaje descifrado: ' . $mensajeDescifrado . '<br>';
+if ($tarea === 'encriptar') {
+    $mensajeCifrado = cifrarMensaje($text, $clave);
+    $reponse = array('status' => 'success', 'message' => $mensajeCifrado);
+} else {
+    $mensajeDescifrado = descifrarMensaje($text, $clave);
+    $reponse = array('status' => 'success', 'message' => $mensajeDescifrado);
+}
+echo json_encode($reponse);
+
+
+//$mensajeOriginal = 'BAJA ME LA JAULA JAIME';
+

@@ -49,14 +49,22 @@ function decrypt($encryptedMessage, $key)
     return $decryptedMessage;
 }
 
+$text = $_POST['texto'];
+$clave = $_POST['clave'];
+$tarea = $_POST['tarea'];
+
+if ($tarea === 'encriptar') {
+    $mensajeCifrado = encrypt($text, $clave);
+    $reponse = array('status' => 'success', 'message' => $mensajeCifrado);
+} else {
+    $mensajeDescifrado = decrypt($text, $clave);
+    $reponse = array('status' => 'success', 'message' => $mensajeDescifrado);
+}
+echo json_encode($reponse);
+
+
 $message = "DESASTRE NUCLEAR EN MURUROA";
 $key = "SOS";
-$encryptedMessage = encrypt($message, $key);
-echo 'Mensaje cifrado: ' . $encryptedMessage . '<br>';
-
-$mensajeDescifrado = decrypt($encryptedMessage, $key);
-echo 'Mensaje descifrado: ' . $mensajeDescifrado . '<br>';
-?>
 
 /*
 El cifrado de Vigenère se considera polialfabético periódico porque el patrón de selección de claves se repite periódicamente.
