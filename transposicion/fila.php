@@ -70,7 +70,10 @@ function filaDecepcriptar($text, $clave)
         }
     }
 
-    return implode($array_text_cifrado);
+    $text = implode($array_text_cifrado);
+    $text = str_replace('x', '', $text);
+
+    return $text;
 }
 
 function ordenar_des($texto, $clave, $len_clave, $col)

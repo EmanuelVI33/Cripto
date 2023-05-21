@@ -40,6 +40,7 @@ function columna_encriptar($text, $clave)
         $text_cifrado = ordenar($text_cifrado, $clave, $n);
     }
 
+
     return $text_cifrado;
 }
 
@@ -134,6 +135,8 @@ function columna_decepcriptar($text, $clave)
             $text_descrip .= $array_descrip[$fil][$col];
         }
     }
+
+    $text_descrip = str_replace('x', '', $text_descrip);
 
     return $text_descrip;
 }
