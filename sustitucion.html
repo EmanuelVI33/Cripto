@@ -1,142 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <title>Crypto</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style type="text/tailwindcss">
-    @layer base {
+  <head>
+    <title>Crypto</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer base {
         textarea {
-          @apply border rounded-md w-full p-2
-      }
+          @apply border rounded-md w-full p-2;
+        }
 
-      input {
-          @apply border rounded-md p-2
-      }
+        input {
+          @apply border rounded-md p-2;
+        }
 
-      select {
-          @apply border rounded-md p-2
-      }
+        select {
+          @apply border rounded-md p-2;
+        }
 
-      button {
-          @apply border rounded-md px-5 py-2 w-1/3 bg-blue-600 text-white
-      }
+        button {
+          @apply border rounded-md px-5 py-2 w-1/3 bg-blue-600 text-white;
+        }
 
-      label {
-          @apply font-bold
-      }
+        label {
+          @apply font-bold;
+        }
       }
     </style>
-</head>
+  </head>
 
-<body class="bg-blue-50">
-  <header class="w-full h-16 bg-white shadow-lg flex justify-between items-center p-5">
-    <h1>Crypto</h1>
-    <ul class="flex gap-5">
-      <li><a href="desplazamiento.html">Desplazamiento</a></li>
-      <li><a href="transposicion.html">Transposición</a></li>
-      <li><a href="sustitucion.html">Sustitución</a></li>
-      <li><a href="polialfabetica.html">Polialfabética</a></li>
-      <li><a href="transformacion.html">Transformacion-Afin</a></li>
-      <li><a href="homofono.html">Homofono</a></li>
-      <li><a href="monogramica.html">Monogramica Polialfabeto</a></li>
-    </ul>
-  </header>
+  <body class="bg-blue-50">
+    <header
+      class="w-full h-16 bg-white shadow-lg flex justify-between items-center p-5"
+    >
+      <h1>Crypto</h1>
+      <ul class="flex gap-5">
+        <li><a href="index.html">Desplazamiento</a></li>
+        <li><a href="transposicion.html">Transposición</a></li>
+        <li><a href="sustitucion.html">Sustitución</a></li>
+        <li><a href="polialfabetica.html">Polialfabética</a></li>
+        <li><a href="transformacion.html">Transformacion-Afin</a></li>
+        <li><a href="homofono.html">Homofono</a></li>
+        <li><a href="monogramica.html">Monogramica Polialfabeto</a></li>
+      </ul>
+    </header>
 
-  <div class="flex flex-col justify-center items-center h-full ">
-    <h2 class="text-xl font-bold pb-2">Mono Alfabética</h2>
-    <form id="form" class="border border-purple-900 bg-purple-500 rounded-md w-1/2 flex flex-col gap-4 p-5">
+    <div class="flex flex-col justify-center items-center h-full">
+      <h2 class="text-xl font-bold pb-2">Mono Alfabética</h2>
+      <form
+        id="form"
+        class="border border-purple-900 bg-purple-500 rounded-md w-1/2 flex flex-col gap-4 p-5"
+      >
         <div class="flex justify-between">
-            <div>
-                <label for="metodo">Método</label>
-                <select name="metodo" id="metodo" required>
-                    <option value="decimacion-pura">Decimación Pura</option>
+          <div>
+            <label for="metodo">Método</label>
+            <select name="metodo" id="metodo" required>
+              <option value="decimacion-pura">Decimación Pura</option>
+            </select>
+          </div>
 
-                </select>
-            </div>
+          <div>
+            <label for="tipo1">
+              <input
+              checked
+                required
+                type="radio"
+                name="tipo"
+                id="tipo1"
+                value="encriptar"
+              />Encriptar
+            </label>
+            <label for="tipo2">
+              <input
+                required
+                type="radio"
+                name="tipo"
+                id="tipo2"
+                value="desencriptar"
+              />Desencriptar
+            </label>
+          </div>
+        </div>
+        <div>
+          <label for="factor">Factor de Decimación</label>
+          <textarea name="factor" id="factor" rows="1" required></textarea>
+        </div>
+        <div>
+          <label for="modulo">Modulo</label>
+          <textarea name="modulo" id="modulo" rows="1" required></textarea>
+        </div>
+        <div>
+          <label for="texto">Texto</label>
+          <textarea name="texto" id="texto" rows="5" required></textarea>
+        </div>
 
-            <div>
-                <label for="tipo1">
-                    <input required
-                           type="radio"
-                           name="tipo"
-                           id="tipo1"
-                           value="encriptar"
-                    />Encriptar
-                </label>
-                <label for="tipo2">
-                    <input required
-                           type="radio"
-                           name="tipo"
-                           id="tipo2"
-                           value="desencriptar"
-                    />Desencriptar
-                </label>
-            </div>
-        </div>
         <div>
-            <label for="factor">Factor de Decimación</label>
-            <textarea name="factor" id="factor" rows="1" required></textarea>
-        </div>
-        <div>
-            <label for="modulo">Modulo</label>
-            <textarea name="modulo" id="modulo" rows="1" required></textarea>
-        </div>
-        <div>
-            <label for="texto">Texto</label>
-            <textarea name="texto" id="texto" rows="5" required></textarea>
-        </div>
-
-        <div>
-            <label for="resultado">Resultado</label>
-            <textarea name="resultado" id="resultado" rows="5"></textarea>
+          <label for="resultado">Resultado</label>
+          <textarea name="resultado" id="resultado" rows="5"></textarea>
         </div>
 
         <div class="flex justify-center">
-            <button>Enviar</button>
+          <button>Enviar</button>
         </div>
-    </form>
-</div>
+      </form>
+    </div>
 
-<script>
-    
-  document.getElementById("form").addEventListener("submit", function (e) {
-      e.preventDefault(); // Evita que se envíe el formulario de manera predeterminada
+    <script>
+      document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Evita que se envíe el formulario de manera predeterminada
 
-      // Obtiene los datos del formulario
-      const factor = document.getElementById("factor").value;
-      const modulo = document.getElementById("modulo").value;
-      
-      const texto = document.getElementById("texto").value;
-      const elementoSeleccionado = document.getElementById("metodo");
-      const metodo = elementoSeleccionado.options[elementoSeleccionado.selectedIndex].value;
+        // Obtiene los datos del formulario
+        const factor = document.getElementById("factor").value;
+        const modulo = document.getElementById("modulo").value;
 
-      const tarea = document.querySelector('input[name="tipo"]:checked').value;
+        const texto = document.getElementById("texto").value;
+        const elementoSeleccionado = document.getElementById("metodo");
+        const metodo =
+          elementoSeleccionado.options[elementoSeleccionado.selectedIndex]
+            .value;
 
-      // Crea un objeto FormData y agrega los datos del formulario
-      const formData = new FormData();
-      formData.append("factor", factor);
-      formData.append("modulo", modulo);
-      formData.append("texto", texto);
-      formData.append("tarea", tarea);
-    
-      fetch(`cifra-sustitucion/${metodo}.php`, {
+        const tarea = document.querySelector(
+          'input[name="tipo"]:checked'
+        ).value;
+
+        // Crea un objeto FormData y agrega los datos del formulario
+        const formData = new FormData();
+        formData.append("factor", factor);
+        formData.append("modulo", modulo);
+        formData.append("texto", texto);
+        formData.append("tarea", tarea);
+
+        fetch(`cifra-sustitucion/${metodo}.php`, {
           method: "POST",
           body: formData,
-      })
+        })
           .then((res) => res.json())
           .then((data) => {
-              console.log(data);
-              const resultado = document.getElementById("resultado");
-              resultado.value = data.message;
+            console.log(data);
+            const resultado = document.getElementById("resultado");
+            resultado.value = data.message;
           })
           .catch(function (error) {
             console.log(texto);
             console.error("Error de solicitud:", error);
           });
-  });
-</script>
-</body>
-
+      });
+    </script>
+  </body>
 </html>
